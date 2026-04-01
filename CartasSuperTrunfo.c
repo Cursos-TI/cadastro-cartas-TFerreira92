@@ -53,7 +53,9 @@ int main() {
   scanf("%d", &pturistico1);
 
   float denspop1 = (float) populacao1 / area1;
-  float pibpc1 = (pib1*1000000000000) / populacao1;  
+  double pibpc1 = (pib1*1000000) / populacao1; //multipliquei para passar o valor do PIB para milhões
+
+  double superpoder1 = (float)populacao1 + area1 + pib1 + (float)pturistico1 + (1/denspop1) + pibpc1;
 
   printf("\n");
 
@@ -83,7 +85,9 @@ int main() {
   scanf("%d", &pturistico2);
   
   float denspop2 = (float) populacao2 / area2;
-  float pibpc2 = (pib2*1000000000000) / populacao2;  
+  double pibpc2 = (pib2*1000000) / populacao2;  //multipliquei para passar o valor do PIB para milhões
+
+  double superpoder2 = (float)populacao2 + area2 + pib2 + (float)pturistico2 + (1/denspop2) + pibpc2;  
 
   // Área para exibição dos dados da cidade
 
@@ -92,6 +96,7 @@ int main() {
   printf("\n");
 
   printf("DADOS DA CIDADE 1:\n");
+  printf("\n");  
 
   printf("Estado: %s\n", estado1);
   printf("Código da carta: %s\n", codigo1);
@@ -102,12 +107,14 @@ int main() {
   printf("Pontos turísticos: %d\n", pturistico1);
   printf("Densidade populacional: %.2f\n", denspop1);
   printf("PIB per Capita: %.2f\n", pibpc1);
+  printf("Superpoder: %.2f\n", superpoder1);
 
   printf("\n");
 
   //Cidade 02
 
   printf("DADOS DA CIDADE 2:\n");
+  printf("\n");
 
   printf("Estado: %s\n", estado2);
   printf("Código da carta: %s\n", codigo2);
@@ -117,9 +124,57 @@ int main() {
   printf("PIB: %.2f milhões de reais\n", pib2);
   printf("Pontos turísticos: %d\n", pturistico2);
   printf("Densidade populacional: %.2f\n", denspop2);
-  printf("PIB per Capita: %.2f\n", pibpc2);  
+  printf("PIB per Capita: %.2f\n", pibpc2); 
+  printf("Superpoder: %.2f\n", superpoder2); 
 
   printf("\n");
 
+  //Área para comparação
+
+  int resultadoPop = populacao1 > populacao2;
+  int resultadoArea = area1 > area2;
+  int resultadoPib = pib1 > pib2;
+  int resultadoPt = pturistico1 > pturistico2;
+  int resultadoDens = (1/denspop1) > (1/denspop2);
+  int resultadoPibpc = pibpc1 > pibpc2;
+  int resultadoSuper = superpoder1 > superpoder2;
+
+  printf("COMPARAÇÕES:\n");
+  printf("\n");
+
+  printf("População carta 01 venceu: %d\n", resultadoPop);
+  printf("Área carta 01 venceu: %d\n", resultadoArea);
+  printf("PIB carta 01 venceu: %d\n", resultadoPib);
+  printf("Pontos turísticos carta 01 venceu: %d\n", resultadoPt);
+  printf("Densidade populacional carta 01 venceu: %d\n", resultadoDens);      
+  printf("PIB per Capita carta 01 venceu: %d\n", resultadoPibpc);
+  printf("Superpoder carta 01 venceu: %d\n", resultadoSuper);
+
+  printf("\n");
+
+
 return 0;
 }
+
+/*Dados cidade 01:
+Estado: São Paulo
+Código: S01
+Cidade: SP
+População: 12325000
+Área: 1521.11
+PIB: 699.28
+Pontos turísticos: 50
+Dens. Pop. : 8102.47
+PIB per Capita: 56724.32
+
+Dados cidade 02:
+Estado: Rio
+Código: R01
+Cidade: RJ
+População: 6748000
+Área: 1200.25
+PIB: 300.50
+Pontos turísticos: 30
+Dens. Pop. : 5622.24
+PIB per Capita: 44532.91*/
+
