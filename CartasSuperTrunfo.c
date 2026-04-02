@@ -152,8 +152,14 @@ int main() {
 
   printf("\n");
 
+  if(populacao1 > populacao2) {
+    printf("A Cidade 1 venceu!\n");
+  } else{
+      printf("A Cidade 2 venceu!");
+    }
 
-return 0;
+  printf("\n");
+
 }
 
 /*Dados cidade 01:
