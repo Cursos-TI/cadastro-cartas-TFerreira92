@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<string.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
@@ -7,18 +8,18 @@
 int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
 
-  char estado1[20];
-  char codigo1[20];
-  char cidade1[20];
+  char estado1[50];
+  char codigo1[50];
+  char cidade1[50];
   int populacao1;
   float area1;
   float pib1;
   int pturistico1;
 
 
-  char estado2[20];
-  char codigo2[20];
-  char cidade2[20];
+  char estado2[50];
+  char codigo2[50];
+  char cidade2[50];
   int populacao2;
   float area2;
   float pib2;
@@ -32,13 +33,16 @@ int main() {
   printf("DIGITE ABAIXO OS DADOS DA PRIMEIRA CIDADE:\n");
 
   printf("Digite o nome do Estado: ");
-  scanf("%s", &estado1);
+  fgets(estado1, 50, stdin);
+  estado1[strcspn(estado1, "\n")] = '\0';
 
   printf("Digite o código da carta: ");
   scanf("%s", &codigo1);
+  while(getchar() != '\n');
 
   printf("Digite o nome da cidade: ");
-  scanf("%s", &cidade1);
+  fgets(cidade1, 50, stdin);
+  cidade1[strcspn(cidade1, "\n")] = '\0';
 
   printf("Digite a população: ");
   scanf("%d", &populacao1);
@@ -63,14 +67,18 @@ int main() {
 
   printf("DIGITE ABAIXO OS DADOS DA SEGUNDA CIDADE:\n");
 
+  while(getchar() != '\n');
   printf("Digite o nome do Estado: ");
-  scanf("%s", &estado2);
+  fgets(estado2, 50, stdin);
+  estado2[strcspn(estado2, "\n")] = '\0';
 
   printf("Digite o código da carta: ");
   scanf("%s", &codigo2);
+  while(getchar() != '\n');
 
   printf("Digite o nome da cidade: ");
-  scanf("%s", &cidade2);
+  fgets(cidade2, 50, stdin);
+  cidade2[strcspn(cidade2, "\n")] = '\0';
 
   printf("Digite a população: ");
   scanf("%d", &populacao2);
@@ -131,35 +139,102 @@ int main() {
 
   //Área para comparação
 
-  int resultadoPop = populacao1 > populacao2;
-  int resultadoArea = area1 > area2;
-  int resultadoPib = pib1 > pib2;
-  int resultadoPt = pturistico1 > pturistico2;
-  int resultadoDens = (1/denspop1) > (1/denspop2);
-  int resultadoPibpc = pibpc1 > pibpc2;
-  int resultadoSuper = superpoder1 > superpoder2;
+  int escolha;
 
-  printf("COMPARAÇÕES:\n");
-  printf("\n");
-
-  printf("População carta 01 venceu: %d\n", resultadoPop);
-  printf("Área carta 01 venceu: %d\n", resultadoArea);
-  printf("PIB carta 01 venceu: %d\n", resultadoPib);
-  printf("Pontos turísticos carta 01 venceu: %d\n", resultadoPt);
-  printf("Densidade populacional carta 01 venceu: %d\n", resultadoDens);      
-  printf("PIB per Capita carta 01 venceu: %d\n", resultadoPibpc);
-  printf("Superpoder carta 01 venceu: %d\n", resultadoSuper);
+  printf("Escolha alguma das opções abaixo para jogar:\n");
+  printf("1. População\n");
+  printf("2. Área\n");
+  printf("3. PIB\n");
+  printf("4. Pontos turísticos\n");
+  printf("5. Densidade populacional\n");
+  printf("6. PIB per capita\n");
+  printf("7. Superpoder\n");
+  printf("Escolha: ");
+  scanf("%d", &escolha);
 
   printf("\n");
 
-  if(populacao1 > populacao2) {
-    printf("A Cidade 1 venceu!\n");
-  } else{
-      printf("A Cidade 2 venceu!");
+  switch(escolha){
+    case 1:
+    printf("O jogador escolheu População\n");
+    printf("\n");
+    if(populacao1 > populacao2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(populacao2 > populacao1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
     }
+    break;
+    case 2:
+    printf("O jogador escolheu Área\n");
+    printf("\n");
+    if(area1 > area2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(area2 > area1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+    case 3:
+    printf("O jogador escolheu PIB\n");
+    printf("\n");
+    if(pib1 > pib2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(pib2 > pib1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+    case 4:
+    printf("O jogador escolheu Pontos turísticos\n");
+    printf("\n");
+    if(pturistico1 > pturistico2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(pturistico2 > pturistico1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+    case 5:
+    printf("O jogador escolheu Densidade populacional\n");
+    printf("\n");
+    if(denspop2 > denspop1){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(denspop1 > denspop2){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+    case 6:
+    printf("O jogador escolheu PIB per capita\n");
+    printf("\n");
+    if(pibpc1 > pibpc2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(pibpc2 > pibpc1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+    case 7:
+    printf("O jogador escolheu Superpoder\n");
+    printf("\n");
+    if(superpoder1 > superpoder2){
+      printf("### %s venceu ###\n", cidade1);
+    } else if(superpoder2 > superpoder1){
+      printf("### %s venceu ###\n", cidade2);
+    } else{
+      printf("### EMPATE ###\n");
+    }
+    break;
+  }
 
   printf("\n");
-
 }
 
 /*Dados cidade 01:
